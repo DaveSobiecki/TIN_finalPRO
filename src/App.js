@@ -7,17 +7,18 @@ import StudentsList from './components/students/StudentsList'
 import TeachersList from './components/teachers/TeachersList'
 import LessonsList from './components/lessons/LessonsList'
 import StudentDetails from './components/students/StudentDetails'
-import TeacherDetails from './components/teachers/TeachersDetails'
-import LessonDetails from './components/lessons/LessonsDetails'
+import TeachersDetails from './components/teachers/TeachersDetails'
+import LessonsDetails from './components/lessons/LessonsDetails'
 import StudentsForm from './components/students/StudentsForm'
 import LessonsForm from './components/lessons/LessonsForm'
 import TeachersForm from './components/teachers/TeachersForm'
 
 import {
   BrowserRouter as Router,
-  Routes,
-  Route
+  Route,
+  Switch
 } from 'react-router-dom';
+
 
 function App() {
   return (
@@ -25,18 +26,21 @@ function App() {
     <div>
       <Header />
       <Navigation />
-      <Routes>
-        <Route exact path="/" element={<MainContent/>} />
-        <Route exact path="/students" element={<StudentsList/>} />
-        <Route exact path="/teachers" element={<TeachersList/>} />
-        <Route exact path="/lessons" element={<LessonsList/>} />
-        <Route exact path="/students/details/:studId" element={<StudentDetails/>} />
-        <Route exact path="/teachers/details/:teacherId" element={<TeacherDetails/>} />
-        <Route exact path="/lessons/details/:lessonId" element={<LessonDetails/>} />
-        <Route exact path="/students/add" element={<StudentsForm/>} />
-        <Route exact path="/lessons/add" element={<LessonsForm/>} />
-        <Route exact path="/teachers/add" element={<TeachersForm/>} />
-      </Routes>
+      <Switch>
+        <Route exact path="/" component={MainContent} />
+        <Route exact path="/students" component={StudentsList} />
+        <Route exact path="/teachers" component={TeachersList} />
+        <Route exact path="/lessons" component={LessonsList} />
+        <Route exact path="/students/details/:studId" component={StudentDetails} />
+        <Route exact path="/teachers/details/:teacherId" component={TeachersDetails} />
+        <Route exact path="/lessons/details/:lessonId" component={LessonsDetails} />
+        <Route exact path="/students/add" component={StudentsForm} />
+        <Route exact path="/lessons/add" component={LessonsForm} />
+        <Route exact path="/teachers/add" component={TeachersForm} />
+        <Route exact path="/students/edit/:studId" component={StudentsForm} />
+        <Route exact path="/teachers/edit/:teacherId" component={TeachersForm} />
+        <Route exact path="/lessons/edit/:lessonId" component={LessonsForm} />
+      </Switch>
       <Footer />
     </div>
     </Router>
@@ -44,9 +48,3 @@ function App() {
 }
 
 export default App;
-
-
-// ----------------------------------------------------------------
-// React Tutorial 1
-// Zacznij od "Nawigacja między komponentami"
-// ----------------------------------------------------------------

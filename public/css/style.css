@@ -342,6 +342,7 @@ textarea {
     }
 
     .form {
+        display: block;
         padding: 1rem;
         grid-template-columns: 1fr;
         text-align: left;

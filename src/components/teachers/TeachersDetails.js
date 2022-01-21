@@ -1,44 +1,76 @@
-import React from 'react'
-import {getTeacherByIdApiCall} from '../../apiCalls/teachersApiCalls'
-import {Link, useParams} from 'react-router-dom'
+import React from 'react';
+import {getTeacherByIdApiCall} from '../../apiCalls/teachersApiCalls';
+import {Link} from 'react-router-dom';
+import TeachersDetailsData from './TeachersDetailsData'
 
-function TeachersDetails(){
-    let {teacherId} = useParams();
-    teacherId = parseInt(teacherId)
-    const teacher = getTeacherByIdApiCall(teacherId);
-    return (
-        <main>
-            <h2>Szczegóły Nauczyciela</h2>
-            <div className="main-content-div">
-            <p className="details-paragraph">Imię: {teacher.firstName}</p>
-            <p className="details-paragraph">Nazwisko: {teacher.lastName}</p>
-            <p className="details-paragraph">E-mail: {teacher.mail}</p>
-            <p className="details-paragraph">Poziom: {teacher.level}</p>
-            <p className="details-paragraph">Pensja: {teacher.salary}zł</p>
-            <h2>Lista Lekcji</h2>
-            <table className="table-list">
-                <thead>
-                    <tr>
-                    <th>Nazwa Lekcji</th>
-                    <th>Uczeń</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {/* {teacher.lessons.map(
-                        lesson => 
-                        <tr key={lesson._id}>
-                            <td>{lesson.name}</td>
-                            <td>{lesson.className}</td>
-                        </tr> 
-                        
-                    )}*/}
-                    {//TODO: dokończ liste lekcji
-                    }<div>TODO</div>
-                </tbody>
-            </table>
-            <Link to="/teachers" className="button-back" className="form-button-submit-Link">Powrót</Link>
-            </div>
-        </main>
-    )
+class TeachersDetails extends React.Component {
+    constructor(props) {
+        super(props);
+        let {teacherId} = props.match.params;
+        this.state = {
+            err: null,
+            isLoaded: false,
+            teacherId: teacherId,
+            teacher: null,
+            message: null,
+        }
+    }
+
+    fetchTeachersDetails = () => {
+        getTeacherByIdApiCall(this.state.teacherId)
+        .then(response => response.json())
+        .then(
+            (data) => {
+                if(data.message) {
+                    this.setState({
+                        teacher: null,
+                        message: data.message
+                    })
+                } else {
+                    this.setState({
+                        teacher: data,
+                        message: null
+                    })
+                }
+                this.setState({
+                    isLoaded:true
+                })
+            },
+            (err) => {
+                this.setState({
+                    isLoaded: true,
+                    err
+                })
+            }
+        )
+    }
+
+    componentDidMount() {
+        this.fetchTeachersDetails()
+    }
+
+    render() {
+        const { teacher, err, isLoaded, message } = this.state;
+        let content;
+
+        if(err) {
+            content = <p>Błąd: {err.message}</p>;
+        } else if(!isLoaded){
+            content = <p>Ładowanie danych Nauczyciela...</p>
+        } else if(message) {
+            content = <p>{message}</p>
+        } else {
+            content = <TeachersDetailsData teacherData={teacher}/>
+        }
+
+        return (
+            <main>
+                <h2>Szczegóły Ucznia</h2>
+                {content}
+                <p><Link to="/teachers" className="form-button-cancel">Powrót</Link></p>
+            </main>
+        )
+    }
 }
+
 export default TeachersDetails

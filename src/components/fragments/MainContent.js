@@ -4,8 +4,8 @@ function MainContent(){
     return(
         <main>
         <h2>Dołącz do nas!</h2>
-        <div class="main-content-div">
-            <p class="long-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar nec nisl id
+        <div className="main-content-div">
+            <p className="long-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pulvinar nec nisl id
                 imperdiet. Nulla
                 scelerisque a turpis dignissim aliquam. Ut purus ligula, fringilla vitae lacinia ac, porttitor nec erat.
                 Nulla
