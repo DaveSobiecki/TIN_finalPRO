@@ -1,0 +1,150 @@
+{
+    "main-page": {
+        "content": "Strona główna"
+    },
+    "nav": {
+        "content": "Strona główna",
+        "students": "Uczniowie",
+        "teachers": "Nauczyciele",
+        "lessons": "Prywatne Lekcje"
+    },
+    "list": {
+        "actions": {
+            "return": "Powrót",
+            "edit": "Edytuj",
+            "details": "Szczegóły",
+            "delete": "Usuń",
+            "cancel": "Anuluj",
+            "actionTableName": "Akcje"
+        }
+    },
+    "students": {
+        "fields": {
+            "firstName": "Imię",
+            "lastName": "Nazwisko",
+            "level": "Poziom",
+            "age": "Wiek",
+            "date": "Data dołączenia"
+        },
+        "list": {
+            "title": "Uczniowie",
+            "addNew": "Dodaj nowego ucznia",
+            "noData": "Brak ucznia w bazie",
+            "pageTitle": "Lista uczniów"
+        },
+        "form": {
+            "studentDetails": "Szczegóły ucznia",
+            "lessonName": "Nazwa Lekcji",
+            "lessonLevel": "Poziom Lekcji",
+            "add": {
+                "pageTitle": "Dodawanie Ucznia",
+                "btnLabel": "Dodaj ucznia",
+                "confirm": {
+                    "header": "Potwierdzenie operacji",
+                    "text": "Pomyślnie dodano ucznia"
+                }
+            },
+            "edit": {
+                "pageTitle": "Edycja Ucznia",
+                "btnLabel": "Zapisz zmiany",
+                "confirm": {
+                    "header": "Potwierdzenie operacji",
+                    "text": "Pomyślnie zaktualizowano ucznia"
+                }
+            }
+        },
+        "details": {
+            "error": "Błąd",
+            "loading": "Ładowanie danych Ucznia",
+            "studentDetails": "Szczegóły Ucznia",
+            "digits": "2-60 digits"
+        }
+    },
+    "teachers": {
+        "fields": {
+            "firstName": "Imię",
+            "lastName": "Nazwisko",
+            "level": "Poziom",
+            "mail": "E-mail",
+            "salary": "Pensja"
+        },
+        "list": {
+            "title": "Nauczyciele",
+            "addNew": "Dodaj nowego nauczyciela",
+            "noData": "Brak nauczyciela w bazie",
+            "pageTitle": "Lista nauczycieli"
+        },
+        "form": {
+            "teacherDetails": "Szczegóły nauczyciela",
+            "lessonName": "Nazwa Lekcji",
+            "lessonLevel": "Poziom Lekcji",
+            "add": {
+                "pageTitle": "Dodawanie Nauczyciela",
+                "btnLabel": "Dodaj nauczyciela",
+                "confirm": {
+                    "header": "Potwierdzenie operacji",
+                    "text": "Pomyślnie dodano nauczyciela"
+                }
+            },
+            "edit": {
+                "pageTitle": "Edycja Nauczyciela",
+                "btnLabel": "Zapisz zmiany",
+                "confirm": {
+                    "header": "Potwierdzenie operacji",
+                    "text": "Pomyślnie zaktualizowano nauczyciela"
+                }
+            }
+        },
+        "details": {
+            "error": "Błąd",
+            "loading": "Ładowanie danych Nauczyciela",
+            "teacherDetails": "Szczegóły Nauczyciela",
+            "digits": "2-60 digits"
+        }
+    },
+    "lessons": {
+        "fields": {
+            "name": "Nazwa Lekcji",
+            "startHour": "Początek zajęć",
+            "endHour": "Koniec zajęć",
+            "level": "Poziom",
+            "day": "Dzień tygodnia",
+            "studentId": "ID Ucznia",
+            "teacherId": "ID Nauczyciela"
+        },
+        "list": {
+            "title": "Prywatne Lekcje",
+            "addNew": "Dodaj nową lekcję",
+            "noData": "Brak lekcji w bazie",
+            "pageTitle": "Lista lekcji"
+        },
+        "form": {
+            "members": "Uczestnicy",
+            "student": "Uczeń",
+            "teacher": "Nauczyciel",
+            "errorsInForm": "Formularz zawiera błędy",
+            "add": {
+                "pageTitle": "Dodawanie Lekcji",
+                "btnLabel": "Dodaj lekcję",
+                "confirm": {
+                    "header": "Potwierdzenie operacji",
+                    "text": "Pomyślnie dodano lekcję"
+                }
+            },
+            "edit": {
+                "pageTitle": "Edycja Lekcji",
+                "btnLabel": "Zapisz zmiany",
+                "confirm": {
+                    "header": "Potwierdzenie operacji",
+                    "text": "Pomyślnie zaktualizowano lekcję"
+                }
+            },
+            "details": {
+                "error": "Błąd",
+                "loading": "Ładowanie danych Lekcji",
+                "privateLesson": "Lekcja Prywatna",
+                "digits": "od 2-60 znaków"
+            }
+        }
+    }
+}

@@ -2,10 +2,11 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import getFormattedDate from '../../helpers/dateHelper'
 import { removeStudentApiCall } from '../../apiCalls/studentsApiCalls'
-
+import { useTranslation } from 'react-i18next';
 
 function StudentsListTableRow(props) {
     const stud = props.studData;
+    const {t} = useTranslation();
     return (
         <tr>
             <td>{stud.firstName}</td>
@@ -16,13 +17,13 @@ function StudentsListTableRow(props) {
             <td>
                 <ul class="list-actions">
                     <li>
-                        <Link to={`/students/edit/${stud._id}`} className="list-actions-button-edit">Edytuj</Link>
+                        <Link to={`/students/edit/${stud._id}`} className="list-actions-button-edit">{t('list.actions.edit')}</Link>
                     </li>
                     <li>
-                        <Link to={`/students/details/${stud._id}`} className="list-actions-button-info">Szegóły</Link>
+                        <Link to={`/students/details/${stud._id}`} className="list-actions-button-info">{t('list.actions.details')}</Link>
                     </li>
                     <li>
-                        <button className="list-actions-button-delete" onClick={(e) => {handleClick(e, stud._id)}}>Usuń</button>
+                        <button className="list-actions-button-delete" onClick={(e) => {handleClick(e, stud._id)}}>{t('list.actions.delete')}</button>
                     </li>
                 </ul>
             </td>

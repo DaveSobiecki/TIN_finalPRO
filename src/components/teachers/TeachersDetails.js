@@ -1,7 +1,8 @@
 import React from 'react';
 import {getTeacherByIdApiCall} from '../../apiCalls/teachersApiCalls';
 import {Link} from 'react-router-dom';
-import TeachersDetailsData from './TeachersDetailsData'
+import TeachersDetailsData from './TeachersDetailsData';
+import {withTranslation} from 'react-i18next';
 
 class TeachersDetails extends React.Component {
     constructor(props) {
@@ -52,11 +53,11 @@ class TeachersDetails extends React.Component {
     render() {
         const { teacher, err, isLoaded, message } = this.state;
         let content;
-
+        const {t} = this.props;
         if(err) {
-            content = <p>Błąd: {err.message}</p>;
+            content = <p>{t('teachers.details.error')}: {err.message}</p>;
         } else if(!isLoaded){
-            content = <p>Ładowanie danych Nauczyciela...</p>
+            content = <p>{t('teachers.details.loading')}...</p>
         } else if(message) {
             content = <p>{message}</p>
         } else {
@@ -65,12 +66,12 @@ class TeachersDetails extends React.Component {
 
         return (
             <main>
-                <h2>Szczegóły Ucznia</h2>
+                <h2>{t('teachers.details.teacherDetails')}</h2>
                 {content}
-                <p><Link to="/teachers" className="form-button-cancel">Powrót</Link></p>
+                <p><Link to="/teachers" className="form-button-cancel">{t('list.action.return')}</Link></p>
             </main>
         )
     }
 }
 
-export default TeachersDetails
+export default withTranslation() (TeachersDetails)

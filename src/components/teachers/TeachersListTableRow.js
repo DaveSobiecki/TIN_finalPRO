@@ -1,9 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import { removeTeacherApiCall } from '../../apiCalls/teachersApiCalls'
+import { useTranslation } from 'react-i18next';
 
 function TeachersListTableRow(props) {
     const teacher = props.teacherData;
+    const {t} = useTranslation();
     return (
         <tr>
             <td>{teacher.firstName}</td>
@@ -14,13 +16,13 @@ function TeachersListTableRow(props) {
             <td>
                 <ul class="list-actions">
                     <li>
-                        <Link to={`/teachers/edit/${teacher._id}`} className="list-actions-button-edit">Edytuj</Link>
+                        <Link to={`/teachers/edit/${teacher._id}`} className="list-actions-button-edit">{t('list.actions.edit')}</Link>
                     </li>
                     <li>
-                        <Link to={`/teachers/details/${teacher._id}`} className="list-actions-button-info">Szegóły</Link>
+                        <Link to={`/teachers/details/${teacher._id}`} className="list-actions-button-info">{t('list.actions.details')}</Link>
                     </li>
                     <li>
-                        <button className="list-actions-button-delete" onClick={(e) => {handleClick(e, teacher._id)}}>Usuń</button>
+                        <button className="list-actions-button-delete" onClick={(e) => {handleClick(e, teacher._id)}}>{t('list.actions.delete')}</button>
                     </li>
                 </ul>
             </td>

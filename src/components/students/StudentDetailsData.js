@@ -1,22 +1,24 @@
 import React from 'react';
 import getFormattedDate from '../../helpers/dateHelper';
 import StudentDetailsDataRow from './StudentDetailsDataRow';
+import { useTranslation } from 'react-i18next';
 
 function StudentDetailsData(props){
     const stud = props.studData;
+    const {t} = useTranslation();
     return(
         <React.Fragment>
-            <p>Imię: {stud.firstName}</p>
-            <p>Nazwisko: {stud.lastName}</p>
-            <p>Wiek: {stud.age}</p>
-            <p>Poziom: {stud.level}</p>
-            <p>Data dołączenia: {getFormattedDate(stud.date)}</p>
-            <h2>Szczegóły Ucznia</h2>
+            <p>{t('student.fields.firstName')}: {stud.firstName}</p>
+            <p>{t('student.fields.lastName')}: {stud.lastName}</p>
+            <p>{t('student.fields.age')}: {stud.age}</p>
+            <p>{t('student.fields.level')}: {stud.level}</p>
+            <p>{t('student.fields.date')}: {getFormattedDate(stud.date)}</p>
+            <h2>{t('student.form.studentDetails')}</h2>
             <table className="table-list">
                 <thead>
                     <tr>
-                        <th>Nazwa Lekcji</th>
-                        <th>Poziom</th>
+                        <th>{t('student.form.lessonName')}</th>
+                        <th>{t('student.form.lessonLevel')}</th>
                     </tr>
                 </thead>
                 <tbody>

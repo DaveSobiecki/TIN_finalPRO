@@ -7,6 +7,7 @@ import FormInput from '../form/FormInput'
 import FormButtons from '../form/FormButtons'
 import getFormattedDate from '../../helpers/dateHelper'
 import FormInputLevels from '../form/FormInputLevels'
+import {withTranslation} from 'react-i18next';
 
 class StudentsForm extends React.Component {
 
@@ -236,10 +237,11 @@ class StudentsForm extends React.Component {
     render() {
 
         const {redirect} = this.state;
+        const {t} = this.props;
 
         if (redirect) {
             const currentFormMode = this.state.formMode;
-            const notice = currentFormMode === formMode.NEW ? 'Pomyślnie dodano nowego ucznia' : 'Pomyślnie zaktualizowano nowego ucznia';
+            const notice = currentFormMode === formMode.NEW ? t('students.for.add.text') : t('students.for.edit.text');
             return(
                 <Redirect to={{
                     pathname: "/students",
@@ -250,9 +252,9 @@ class StudentsForm extends React.Component {
             )
         }
 
-        const errorsSummary = this.hasErrors() ? 'Formularz zawiera błędy' : '';
-        const fetchError = this.state.err ? `Błąd: ${this.state.err.message}` : '';
-        const pageTitle = this.state.formMode === formMode.NEW ? 'Nowy uczeń' : 'Edycja ucznia';
+        const errorsSummary = this.hasErrors() ? t('lessons.form.errorsInForm') : '';
+        const fetchError = this.state.err ? `${t('students.details.error')}: ${this.state.err.message}` : '';
+        const pageTitle = this.state.formMode === formMode.NEW ? t('students.form.add.pageTitle') : t('student.form.edit.pageTitle');
 
         const globalErrorMessage = errorsSummary || fetchError || this.state.message;
 
@@ -262,27 +264,27 @@ class StudentsForm extends React.Component {
                 <form className="form" onSubmit={this.handleSubmit}>
                     <FormInput
                         type="text"
-                        label="Imię"
+                        label={t('students.fields.firstName')}
                         required
                         error={this.state.errors.firstName}
                         name="firstName"
-                        placeholder="2-60 znaków"
+                        placeholder={t('students.details.digits')}
                         onChange={this.handleChange}
                         value={this.state.student.firstName}
                     />
                     <FormInput
                         type="text"
-                        label="Nazwisko"
+                        label={t('students.fields.lastName')}
                         required
                         error={this.state.errors.lastName}
                         name="lastName"
-                        placeholder="2-60 znaków"
+                        placeholder={t('students.fields.digits')}
                         onChange={this.handleChange}
                         value={this.state.student.lastName}
                     />
                     <FormInput
                         type="number"
-                        label="Wiek"
+                        label={t('students.fields.age')}
                         required
                         error={this.state.errors.age}
                         name="age"
@@ -292,7 +294,7 @@ class StudentsForm extends React.Component {
                     />
                     <FormInputLevels
                         type="text"
-                        label="Poziom"
+                        label={t('students.fields.level')}
                         required
                         error={this.state.errors.level}
                         name="level"
@@ -302,7 +304,7 @@ class StudentsForm extends React.Component {
                     />
                     <FormInput
                         type="date"
-                        label="Data dołączenia"
+                        label={t('students.fields.date')}
                         error={this.state.errors.date}
                         name="date"
                         placeholder=""
@@ -320,4 +322,4 @@ class StudentsForm extends React.Component {
     }
 }
 
-export default StudentsForm
+export default withTranslation() (StudentsForm)

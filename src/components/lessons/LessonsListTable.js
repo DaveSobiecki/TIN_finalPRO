@@ -1,19 +1,20 @@
 import React from 'react';
 import LessonsListTableRow from './LessonsListTableRow';
-
+import { useTranslation } from 'react-i18next';
 
 export default function LessonsListTable(props) {
     const lessonsList = props.lessonsList;
+    const {t} = useTranslation();
     return (
         <table className="table-list" id="lessonentList">
                     <thead>
                         <tr>
-                        <th>Nazwa Lekcji</th>
-                        <th>Poziom</th>
-                        <th>Początek zajęć</th>
-                        <th>Koniec zajęć</th>
-                        <th>Dzień tygodnia</th>
-                        <th>Akcje</th>
+                        <th>{t('lessons.fields.name')}</th>
+                        <th>{t('lessons.fields.level')}</th>
+                        <th>{t('lessons.fields.startHour')}</th>
+                        <th>{t('lessons.fields.endHour')}</th>
+                        <th>{t('lessons.fields.day')}</th>
+                        <th>{t('list.actions.actionTableName')}</th>
                         </tr>
                     </thead>
                     <tbody>

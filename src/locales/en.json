@@ -1,0 +1,160 @@
+{
+    "main-page": {
+        "content": "Main Page"
+    },
+    "nav": {
+        "content": "Main Page",
+        "students": "Students",
+        "teachers": "Teachers",
+        "lessons": "Private Lessons"
+    },
+    "list": {
+        "actions": {
+            "return": "Return",
+            "edit": "Edit",
+            "details": "Details",
+            "delete": "Delete",
+            "cancel": "Cancel",
+            "actionTableName": "Actions"
+        }
+    },
+    "students": {
+        "fields": {
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "level": "Level",
+            "age": "Age",
+            "date": "Date of Joining"
+        },
+        "list": {
+            "title": "Students",
+            "addNew": "Add new student",
+            "noData": "No such student in database",
+            "pageTitle": "List of students"
+        },
+        "form": {
+            "studentDetails": "Student Details",
+            "lessonName": "Lesson Name",
+            "lessonLevel": "Lesson Level",
+            "add": {
+                "pageTitle": "Add Student",
+                "btnLabel": "Add Student",
+                "confirm": {
+                    "header": "Confirmation",
+                    "text": "The new student has been successfully created"
+                }
+            },
+            "edit": {
+                "pageTitle": "Edit Student",
+                "btnLabel": "Save Changes",
+                "confirm": {
+                    "header": "Confirmation",
+                    "text": "The student has been successfully updated"
+                }
+            },
+            "field": {
+                "firstName": "student.field.firstName"
+            },
+            "details": {
+                "error": "Error",
+                "loading": "Student data loading",
+                "studentDetails": "Student Details",
+                "digits": "2-60 digits"
+            }
+        }
+    },
+    "teachers": {
+        "fields": {
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "level": "Level",
+            "mail": "E-mail",
+            "salary": "Salary"
+        },
+        "list": {
+            "title": "Teachers",
+            "addNew": "Add new teacher",
+            "noData": "No such teacher in database",
+            "pageTitle": "List of Teachers"
+        },
+        "form": {
+            "teacherDetails": "Teacher Details",
+            "lessonName": "Lesson Name",
+            "lessonLevel": "Lesson Level",
+            "add": {
+                "pageTitle": "Add Teacher",
+                "btnLabel": "Add Teacher",
+                "confirm": {
+                    "header": "Confirmation",
+                    "text": "The new teacher has been successfully created"
+                }
+            },
+            "edit": {
+                "pageTitle": "Teacher Edit",
+                "btnLabel": "Save Changes",
+                "confirm": {
+                    "header": "Confirmation",
+                    "text": "The teacher has been successfully updated"
+                }
+            },
+            "field": {
+                "firstName": "teacher.field.firstName"
+            },
+            "details": {
+                "error": "Error",
+                "loading": "Teacher data loading",
+                "teacherDetails": "Teacher Details",
+                "digits": "2-60 digits",
+                "digitsMail": "2-60 digits"
+            }
+        }
+    },
+    "lessons": {
+        "fields": {
+            "name": "Lesson Name",
+            "startHour": "Lesson Start",
+            "endHour": "Lesson End",
+            "level": "Level",
+            "day": "Day of the week",
+            "studentId": "Student ID",
+            "teacherId": "Teacher ID"
+        },
+        "list": {
+            "title": "Private Lessons",
+            "addNew": "Add new Lesson",
+            "noData": "No lesson in database",
+            "pageTitle": "Lessons list"
+        },
+        "form": {
+            "members": "Members",
+            "student": "Student",
+            "teacher": "Teacher",
+            "errorsInForm": "This form have errors",
+            "add": {
+                "pageTitle": "Add Lesson",
+                "btnLabel": "Add Lesson",
+                "confirm": {
+                    "header": "Confirmation",
+                    "text": "The new lesson has been successfully created"
+                }
+            },
+            "edit": {
+                "pageTitle": "Edit Lesson",
+                "btnLabel": "Save Changes",
+                "confirm": {
+                    "header": "Confirmation",
+                    "text": "The lesson has been successfully updated"
+                }
+            },
+            "field": {
+                "name": "lesson.field.name"
+            }
+        },
+        "details": {
+            "error": "Error",
+            "loading": "Lesson data loading",
+            "privateLesson": "Private Lesson",
+            "digits": "2-60 digits"
+        }
+    }
+}

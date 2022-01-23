@@ -1,19 +1,20 @@
 import React from 'react';
 import TeachersListTableRow from './TeachersListTableRow';
-
+import { useTranslation } from 'react-i18next';
 
 export default function TeachersListTable(props) {
     const teachers = props.teachersList;
+    const {t} = useTranslation();
     return (
         <table className="table-list" id="teacherList">
                     <thead>
                         <tr>
-                        <th>Imię</th>
-                        <th>Nazwisko</th>
-                        <th>E-mail</th>
-                        <th>Poziom</th>
-                        <th>Pensja</th>
-                        <th>Akcje</th>
+                        <th>{t('teachers.fields.firstName')}</th>
+                        <th>{t('teachers.fields.lastName')}</th>
+                        <th>{t('teachers.fields.mail')}</th>
+                        <th>{t('teachers.fields.level')}</th>
+                        <th>{t('teachers.fields.salary')}</th>
+                        <th>{t('list.actions.actionTableName')}</th>
                         </tr>
                     </thead>
                     <tbody>

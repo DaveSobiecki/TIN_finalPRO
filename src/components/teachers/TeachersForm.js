@@ -1,11 +1,12 @@
-import React from 'react'
-import formMode from '../../helpers/formHelper'
-import { getTeacherByIdApiCall, updateTeacherApiCall, addTeacherApiCall } from '../../apiCalls/teachersApiCalls'
-import { checkRequired, checkTextLengthRange, checkEmail, checkNumber } from '../../helpers/validation/validationCommon'
-import { Redirect } from 'react-router-dom'
-import FormInput from '../form/FormInput'
-import FormButtons from '../form/FormButtons'
-import FormInputLevels from '../form/FormInputLevels'
+import React from 'react';
+import formMode from '../../helpers/formHelper';
+import { getTeacherByIdApiCall, updateTeacherApiCall, addTeacherApiCall } from '../../apiCalls/teachersApiCalls';
+import { checkRequired, checkTextLengthRange, checkEmail, checkNumber } from '../../helpers/validation/validationCommon';
+import { Redirect } from 'react-router-dom';
+import FormInput from '../form/FormInput';
+import FormButtons from '../form/FormButtons';
+import FormInputLevels from '../form/FormInputLevels';
+import {withTranslation} from 'react-i18next';
 
 class TeachersForm extends React.Component {
 
@@ -228,10 +229,11 @@ class TeachersForm extends React.Component {
     render() {
 
         const {redirect} = this.state;
+        const {t} = this.props;
 
         if (redirect) {
             const currentFormMode = this.state.formMode;
-            const notice = currentFormMode === formMode.NEW ? 'Pomyślnie dodano nowego ucznia' : 'Pomyślnie zaktualizowano nowego ucznia';
+            const notice = currentFormMode === formMode.NEW ? t('teachers.for.add.text') : t('teachers.for.edit.text');
             return(
                 <Redirect to={{
                     pathname: "/teachers",
@@ -242,9 +244,9 @@ class TeachersForm extends React.Component {
             )
         }
 
-        const errorsSummary = this.hasErrors() ? 'Formularz zawiera błędy' : '';
-        const fetchError = this.state.err ? `Błąd: ${this.state.err.message}` : '';
-        const pageTitle = this.state.formMode === formMode.NEW ? 'Nowy Nauczyciel' : 'Edycja Nauczyciela';
+        const errorsSummary = this.hasErrors() ? t('lessons.form.errorsInForm') : '';
+        const fetchError = this.state.err ? `${t('teachers.details.error')}: ${this.state.err.message}` : '';
+        const pageTitle = this.state.formMode === formMode.NEW ? t('teachers.form.add.pageTitle') : t('teachers.form.edit.pageTitle');
 
         const globalErrorMessage = errorsSummary || fetchError || this.state.message;
 
@@ -254,27 +256,27 @@ class TeachersForm extends React.Component {
                 <form className="form" onSubmit={this.handleSubmit}>
                     <FormInput
                         type="text"
-                        label="Imię"
+                        label={t('students.fields.firstName')}
                         required
                         error={this.state.errors.firstName}
                         name="firstName"
-                        placeholder="2-60 znaków"
+                        placeholder={t('students.details.digits')}
                         onChange={this.handleChange}
                         value={this.state.teacher.firstName}
                     />
                     <FormInput
                         type="text"
-                        label="Nazwisko"
+                        label={t('students.fields.lastName')}
                         required
                         error={this.state.errors.lastName}
                         name="lastName"
-                        placeholder="2-60 znaków"
+                        placeholder={t('students.details.digits')}
                         onChange={this.handleChange}
                         value={this.state.teacher.lastName}
                     />
                     <FormInput
                         type="number"
-                        label="Pensja"
+                        label={t('students.fields.salary')}
                         required
                         error={this.state.errors.salary}
                         name="salary"
@@ -284,7 +286,7 @@ class TeachersForm extends React.Component {
                     />
                     <FormInputLevels
                         type="text"
-                        label="Poziom"
+                        label={t('students.fields.level')}
                         required
                         error={this.state.errors.level}
                         name="level"
@@ -294,11 +296,11 @@ class TeachersForm extends React.Component {
                     />
                     <FormInput
                         type="email"
-                        label="E-mail"
+                        label={t('students.fields.mail')}
                         error={this.state.errors.mail}
                         required
                         name="mail"
-                        placeholder="od 5-60 znaków"
+                        placeholder={t('students.details.digitsMail')}
                         onChange={this.handleChange}
                         value={this.state.teacher.mail}
                     />
@@ -313,4 +315,4 @@ class TeachersForm extends React.Component {
     }
 }
 
-export default TeachersForm
+export default withTranslation() (TeachersForm)

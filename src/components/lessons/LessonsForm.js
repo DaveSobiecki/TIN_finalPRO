@@ -7,6 +7,7 @@ import FormInput from '../form/FormInput'
 import FormButtons from '../form/FormButtons'
 import FormInputLevels from '../form/FormInputLevels'
 import FormInputWeekday from '../form/FormInputWeekday'
+import {withTranslation} from 'react-i18next';
 
 class LessonsForm extends React.Component {
 
@@ -244,10 +245,11 @@ class LessonsForm extends React.Component {
     render() {
 
         const {redirect} = this.state;
+        const {t} = this.props;
 
         if (redirect) {
             const currentFormMode = this.state.formMode;
-            const notice = currentFormMode === formMode.NEW ? 'Pomyślnie dodano nowego ucznia' : 'Pomyślnie zaktualizowano nowego ucznia';
+            const notice = currentFormMode === formMode.NEW ? t('lessons.for.add.text') : t('lessons.for.edit.text');
             return(
                 <Redirect to={{
                     pathname: "/lessons",
@@ -258,19 +260,18 @@ class LessonsForm extends React.Component {
             )
         }
 
-        const errorsSummary = this.hasErrors() ? 'Formularz zawiera błędy' : '';
-        const fetchError = this.state.err ? `Błąd: ${this.state.err.message}` : '';
-        const pageTitle = this.state.formMode === formMode.NEW ? 'Nowa Lekcja' : 'Edycja Lekcji';
+        const errorsSummary = this.hasErrors() ? t('lessons.form.errorsInForm') : '';
+        const fetchError = this.state.err ? t('lessons.details.error') + ':' + ' ${this.state.err.message}' : '';
+        const pageTitle = this.state.formMode === formMode.NEW ? t('lessons.form.add.pageTitle') : t('lessons.form.edit.pageTitle');
 
         const globalErrorMessage = errorsSummary || fetchError || this.state.message;
-
         return (
             <main>
                 <h2>{pageTitle}</h2>
                 <form className="form" onSubmit={this.handleSubmit}>
                     <FormInput
                         type="text"
-                        label="Nazwa Lekcji"
+                        label={t('lessons.fields.name')}
                         required
                         error={this.state.errors.firstName}
                         name="name"
@@ -280,7 +281,7 @@ class LessonsForm extends React.Component {
                     />
                     <FormInputLevels
                         type="text"
-                        label="Poziom Lekcji"
+                        label={t('lessons.fields.level')}
                         required
                         error={this.state.errors.level}
                         name="level"
@@ -290,7 +291,7 @@ class LessonsForm extends React.Component {
                     />
                     <FormInput
                         type="time"
-                        label="Czas rozpoczęcia zajęć"
+                        label={t('lessons.fields.startHour')}
                         required
                         error={this.state.errors.startHour}
                         name="startHour"
@@ -300,7 +301,7 @@ class LessonsForm extends React.Component {
                     />
                     <FormInput
                         type="time"
-                        label="Czas rozpoczęcia zajęć"
+                        label={t('lessons.fields.endHour')}
                         required
                         error={this.state.errors.endHour}
                         name="endHour"
@@ -310,7 +311,7 @@ class LessonsForm extends React.Component {
                     />
                     <FormInputWeekday
                         type="text"
-                        label="Dzień tygodnia"
+                        label={t('lessons.fields.day')}
                         error={this.state.errors.day}
                         name="day"
                         placeholder=""
@@ -319,7 +320,7 @@ class LessonsForm extends React.Component {
                     />
                     <FormInput
                         type="number"
-                        label="ID ucznia"
+                        label={t('lessons.fields.studentId')}
                         required
                         error={this.state.errors.endHour}
                         name="student_id"
@@ -329,7 +330,7 @@ class LessonsForm extends React.Component {
                     />
                     <FormInput
                         type="number"
-                        label="ID nauczyciela"
+                        label={t('lessons.fields.teacherId')}
                         required
                         error={this.state.errors.teacher_id}
                         name="teacher_id"
@@ -348,4 +349,4 @@ class LessonsForm extends React.Component {
     }
 }
 
-export default LessonsForm
+export default withTranslation() (LessonsForm)

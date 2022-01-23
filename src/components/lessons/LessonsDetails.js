@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {getLessonByIdApiCall} from '../../apiCalls/lessonsApiCalls';
 import LessonsDetailsData from './LessonsDetailsData';
+import {withTranslation} from 'react-i18next';
 
 class LessonsDetails extends React.Component {
     constructor(props) {
@@ -56,11 +57,11 @@ class LessonsDetails extends React.Component {
     render() {
         const { lesson, err, isLoaded, message, student, teacher } = this.state;
         let content;
-
+        const {t} = this.props;
         if(err) {
-            content = <p>Błąd: {err.message}</p>;
+            content = <p>{t('lessons.details.error')}: {err.message}</p>;
         } else if(!isLoaded){
-            content = <p>Ładowanie danych Lekcji...</p>
+            content = <p>{t('lessons.details.loading')}...</p>
         } else if(message) {
             content = <p>{message}</p>
         } else {
@@ -69,12 +70,12 @@ class LessonsDetails extends React.Component {
 
         return (
             <main>
-                <h2>Lekcja Prywatna</h2>
+                <h2>{t('lessons.details.privateLesson')}</h2>
                 {content}
-                <p><Link to="/lessons" className="form-button-cancel">Powrót</Link></p>
+                <p><Link to="/lessons" className="form-button-cancel">{t('list.actions.return')}</Link></p>
             </main>
         )
     }
 }
 
-export default LessonsDetails
+export default withTranslation() (LessonsDetails)
