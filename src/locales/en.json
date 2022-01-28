@@ -54,13 +54,14 @@
             },
             "field": {
                 "firstName": "student.field.firstName"
-            },
-            "details": {
-                "error": "Error",
-                "loading": "Student data loading",
-                "studentDetails": "Student Details",
-                "digits": "2-60 digits"
             }
+        },
+        "details": {
+            "error": "Error",
+            "loading": "Student data loading",
+            "studentDetails": "Student Details",
+            "digits": "2-60 digits",
+            "ourStudents": "Students"
         }
     },
     "teachers": {
@@ -81,6 +82,7 @@
             "teacherDetails": "Teacher Details",
             "lessonName": "Lesson Name",
             "lessonLevel": "Lesson Level",
+            "cancel": "Cancel",
             "add": {
                 "pageTitle": "Add Teacher",
                 "btnLabel": "Add Teacher",
@@ -99,14 +101,15 @@
             },
             "field": {
                 "firstName": "teacher.field.firstName"
-            },
-            "details": {
-                "error": "Error",
-                "loading": "Teacher data loading",
-                "teacherDetails": "Teacher Details",
-                "digits": "2-60 digits",
-                "digitsMail": "2-60 digits"
             }
+        },
+        "details": {
+            "error": "Error",
+            "loading": "Teacher data loading",
+            "teacherDetails": "Teacher Details",
+            "digits": "2-60 digits",
+            "digitsMail": "5-60 digits",
+            "ourTeachers": "Teachers"
         }
     },
     "lessons": {
@@ -154,7 +157,42 @@
             "error": "Error",
             "loading": "Lesson data loading",
             "privateLesson": "Private Lesson",
+            "privateLessons": "Private Lessons",
             "digits": "2-60 digits"
         }
+    },
+    "auth": {
+        "pageTitle": "Login",
+        "password": "Password",
+        "login": "Login",
+        "log-in": "Login",
+        "logout": "Logout"
+    },
+    "forms": {
+        "fieldRequired": "Field required",
+        "add": "Add",
+        "textFieldError": "The field should contain from 2 to 60 characters",
+        "mailFieldError": "The field should contain a valid email address",
+        "mailDigitsError": "The field should contain 5 to 60 characters",
+        "ageFieldError": "The field should contain the age of the student",
+        "levelFieldErrorStud": "The field should contain 2 characters describing the student's level",
+        "levelFieldErrorTeacher": "The field should contain 2 characters describing the teacher's level",
+        "levelFieldErrorLesson": "The field should contain 2 characters describing the lesson level",
+        "sallaryFieldError": "The field should contain the teacher's salary",
+        "startHourFieldError": "The field should contain the start time of the class",
+        "endHourFieldError": "The field should contain the end time of the class",
+        "studIdFieldError": "The field should contain the student's id",
+        "teacherIdFieldError": "The field should contain the teacher's id",
+        "emptyFieldError": "The field cannot be empty",
+        "formHasErrors": "Form has errors"
+    },
+    "weekdays": {
+        "monday": "Monday",
+        "tuesday": "Tuesday",
+        "wednesday": "Wednesday",
+        "thursday": "Thursday",
+        "friday": "Friday",
+        "saturday": "Saturday",
+        "sunday": "Sunday"
     }
 }

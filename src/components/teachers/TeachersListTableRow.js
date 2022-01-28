@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import { removeTeacherApiCall } from '../../apiCalls/teachersApiCalls'
 import { useTranslation } from 'react-i18next';
+import { isAuthenticated } from '../../helpers/authHelper';
 
 function TeachersListTableRow(props) {
     const teacher = props.teacherData;
@@ -13,6 +14,7 @@ function TeachersListTableRow(props) {
             <td>{teacher.mail} </td>
             <td>{teacher.level}</td>
             <td>{teacher.salary}zł</td>
+            {isAuthenticated() &&
             <td>
                 <ul class="list-actions">
                     <li>
@@ -25,7 +27,7 @@ function TeachersListTableRow(props) {
                         <button className="list-actions-button-delete" onClick={(e) => {handleClick(e, teacher._id)}}>{t('list.actions.delete')}</button>
                     </li>
                 </ul>
-            </td>
+            </td>}
        </tr>
     )
 }

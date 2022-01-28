@@ -1,6 +1,7 @@
 import React from 'react';
 import TeachersListTableRow from './TeachersListTableRow';
 import { useTranslation } from 'react-i18next';
+import { isAuthenticated } from '../../helpers/authHelper';
 
 export default function TeachersListTable(props) {
     const teachers = props.teachersList;
@@ -14,7 +15,7 @@ export default function TeachersListTable(props) {
                         <th>{t('teachers.fields.mail')}</th>
                         <th>{t('teachers.fields.level')}</th>
                         <th>{t('teachers.fields.salary')}</th>
-                        <th>{t('list.actions.actionTableName')}</th>
+                        { isAuthenticated() && <th>{t('list.actions.actionTableName')}</th>}
                         </tr>
                     </thead>
                     <tbody>

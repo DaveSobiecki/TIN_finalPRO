@@ -95,57 +95,59 @@ class LessonsForm extends React.Component {
 
     validateField = (fieldName, fieldValue) => {
         let errorMessage = '';
-
+        const {t} = this.props;
         if (fieldName === 'name'){
             if(!checkRequired(fieldValue)){
-                errorMessage = 'Pole wymagane';
+                errorMessage = t('forms.fieldRequired');
             } else if (!checkTextLengthRange(fieldValue, 2, 60)){
-                errorMessage = 'Pole powinno zawierać od 2 do 60 znaków';
+                errorMessage = t('forms.textfieldError');
             }
         }
         
         if (fieldName === 'level'){
             if(!checkRequired(fieldValue)){
-                errorMessage = 'Pole wymagane';
+                errorMessage = t('forms.fieldRequired');
             } else if (!checkTextLengthRange(fieldValue, 2, 2)){
-                errorMessage = 'Pole powinno zawierać 2 znaki opisujące poziom ucznia';
+                errorMessage = t('forms.levelFieldErrorLesson');
             }
         }
 
         if (fieldName === 'startHour'){
             if(!checkRequired(fieldValue)){
-                errorMessage = 'Pole wymagane';
+                errorMessage = t('forms.fieldRequired');
             } else if (!checkTime(fieldValue)){
-                errorMessage = 'Pole powinno zawierać godzinę rozpoczęcia zajęć';
+                errorMessage = t('forms.startHourFieldError');
             }
         }
 
         if (fieldName === 'endHour'){
             if(!checkRequired(fieldValue)){
-                errorMessage = 'Pole wymagane';
+                errorMessage = t('forms.fieldRequired');
             } else if (!checkTime(fieldValue)){
-                errorMessage = 'Pole powinno zawierać od 2 do 60 znaków';
+                errorMessage = t('forms.endHourFieldError');
             }
         }
 
         if (fieldName === 'day'){
             if(!checkRequired(fieldValue)){
-                errorMessage = 'Pole wymagane';
+                errorMessage = t('forms.fieldRequired');
             }
         }
 
         if (fieldName === 'student_id'){
             if(!checkRequired(fieldValue)){
-                errorMessage = 'Pole wymagane';
+                errorMessage = t('forms.fieldRequired');
             } else if (!checkNumber(fieldValue)){
-                errorMessage = 'Pole powinno zawierać id ucznia';
+                errorMessage = t('forms.studIdFieldError');
             }
         }
 
 
         if (fieldName === 'teacher_id'){
             if(!checkRequired(fieldValue)){
-                errorMessage = 'Pole powinno zawierać id nauczyciela';
+                errorMessage = t('forms.fieldRequired');
+            } else if (!checkNumber(fieldValue)){
+                errorMessage = t('forms.studIdFieldError');
             }
         }
         
@@ -249,7 +251,7 @@ class LessonsForm extends React.Component {
 
         if (redirect) {
             const currentFormMode = this.state.formMode;
-            const notice = currentFormMode === formMode.NEW ? t('lessons.for.add.text') : t('lessons.for.edit.text');
+            const notice = currentFormMode === formMode.NEW ? t('lessons.form.add.text') : t('lessons.form.edit.text');
             return(
                 <Redirect to={{
                     pathname: "/lessons",
@@ -275,7 +277,7 @@ class LessonsForm extends React.Component {
                         required
                         error={this.state.errors.firstName}
                         name="name"
-                        placeholder="2-60 znaków"
+                        placeholder={t('teachers.details.digits')}
                         onChange={this.handleChange}
                         value={this.state.lesson.name}
                     />

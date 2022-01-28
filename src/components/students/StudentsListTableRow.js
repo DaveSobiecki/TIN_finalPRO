@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import getFormattedDate from '../../helpers/dateHelper'
 import { removeStudentApiCall } from '../../apiCalls/studentsApiCalls'
 import { useTranslation } from 'react-i18next';
+import { isAuthenticated } from '../../helpers/authHelper'
 
 function StudentsListTableRow(props) {
     const stud = props.studData;
@@ -14,6 +15,7 @@ function StudentsListTableRow(props) {
             <td className="age-column">{stud.age} </td>
             <td>{stud.level}</td>
             <td className="date-column">{getFormattedDate(stud.date)}</td>
+            {isAuthenticated() &&
             <td>
                 <ul class="list-actions">
                     <li>
@@ -26,7 +28,7 @@ function StudentsListTableRow(props) {
                         <button className="list-actions-button-delete" onClick={(e) => {handleClick(e, stud._id)}}>{t('list.actions.delete')}</button>
                     </li>
                 </ul>
-            </td>
+            </td>}
        </tr>
     )
 }

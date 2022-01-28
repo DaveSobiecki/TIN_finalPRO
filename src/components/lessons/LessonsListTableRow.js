@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {removeLessonApiCall} from '../../apiCalls/lessonsApiCalls'
 import { useTranslation } from 'react-i18next';
+import { isAuthenticated } from '../../helpers/authHelper';
 
 function LessonsListTableRow(props) {
     const {t} = useTranslation();
@@ -13,6 +14,7 @@ function LessonsListTableRow(props) {
             <td>{lesson.startHour} </td>
             <td>{lesson.endHour}</td>
             <td>{lesson.day}</td>
+            {isAuthenticated() &&
             <td>
                 <ul class="list-actions">
                     <li>
@@ -25,7 +27,7 @@ function LessonsListTableRow(props) {
                         <button className="list-actions-button-delete" onClick={(e) => {handleClick(e, lesson._id)}}>{t('list.actions.delete')}</button>
                     </li>
                 </ul>
-            </td>
+            </td>}
        </tr>
     )
 }

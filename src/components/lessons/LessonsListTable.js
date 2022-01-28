@@ -1,6 +1,7 @@
 import React from 'react';
 import LessonsListTableRow from './LessonsListTableRow';
 import { useTranslation } from 'react-i18next';
+import { isAuthenticated } from '../../helpers/authHelper';
 
 export default function LessonsListTable(props) {
     const lessonsList = props.lessonsList;
@@ -14,7 +15,7 @@ export default function LessonsListTable(props) {
                         <th>{t('lessons.fields.startHour')}</th>
                         <th>{t('lessons.fields.endHour')}</th>
                         <th>{t('lessons.fields.day')}</th>
-                        <th>{t('list.actions.actionTableName')}</th>
+                        { isAuthenticated() && <th>{t('list.actions.actionTableName')}</th>}
                         </tr>
                     </thead>
                     <tbody>

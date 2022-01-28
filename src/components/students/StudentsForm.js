@@ -92,52 +92,42 @@ class StudentsForm extends React.Component {
 
     validateField = (fieldName, fieldValue) => {
         let errorMessage = '';
-
+        const {t} = this.props;
         if (fieldName === 'firstName'){
             if(!checkRequired(fieldValue)){
-                errorMessage = 'Pole wymagane';
+                errorMessage = t('forms.fieldRequired');
             } else if (!checkTextLengthRange(fieldValue, 2, 60)){
-                errorMessage = 'Pole powinno zawierać od 2 do 60 znaków';
+                errorMessage = t('forms.textFieldError');
             }
         }
 
         if (fieldName === 'lastName'){
             if(!checkRequired(fieldValue)){
-                errorMessage = 'Pole wymagane';
+                errorMessage = t('forms.fieldRequired');
             } else if (!checkTextLengthRange(fieldValue, 2, 60)){
-                errorMessage = 'Pole powinno zawierać od 2 do 60 znaków';
-            }
-        }
-
-        if (fieldName === 'mail'){
-            if(!checkRequired(fieldValue)){
-                errorMessage = 'Pole wymagane';
-            } else if (!checkTextLengthRange(fieldValue, 5, 60)){
-                errorMessage = 'Pole powinno zawierać od 5 do 60 znaków';
-            } else if (!checkEmail(fieldValue)){
-                errorMessage = 'Pole powinno zawierać prawidłowy adres email';
+                errorMessage = t('forms.fieldRequired');
             }
         }
 
         if (fieldName === 'age'){
             if(!checkRequired(fieldValue)){
-                errorMessage = 'Pole wymagane';
+                errorMessage = t('forms.fieldRequired');
             } else if (!checkNumber(fieldValue)){
-                errorMessage = 'Pole powinno zawierać wiek ucznia';
+                errorMessage = t('forms.ageFieldError');
             }
         }
 
         if (fieldName === 'level'){
             if(!checkRequired(fieldValue)){
-                errorMessage = 'Pole wymagane';
+                errorMessage = t('forms.fieldRequired');
             } else if (!checkTextLengthRange(fieldValue, 2, 2)){
-                errorMessage = 'Pole powinno zawierać 2 znaki opisujące poziom ucznia';
+                errorMessage = t('forms.levelFieldErrorStud');
             }
         }
 
         if (fieldName === 'date'){
             if(!checkRequired(fieldValue)){
-                errorMessage = 'Pole wymagane';
+                errorMessage = t('forms.fieldRequired');
             }
         }
 
@@ -241,7 +231,7 @@ class StudentsForm extends React.Component {
 
         if (redirect) {
             const currentFormMode = this.state.formMode;
-            const notice = currentFormMode === formMode.NEW ? t('students.for.add.text') : t('students.for.edit.text');
+            const notice = currentFormMode === formMode.NEW ? t('students.form.add.text') : t('students.form.edit.text');
             return(
                 <Redirect to={{
                     pathname: "/students",
@@ -278,7 +268,7 @@ class StudentsForm extends React.Component {
                         required
                         error={this.state.errors.lastName}
                         name="lastName"
-                        placeholder={t('students.fields.digits')}
+                        placeholder={t('students.details.digits')}
                         onChange={this.handleChange}
                         value={this.state.student.lastName}
                     />

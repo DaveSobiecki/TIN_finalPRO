@@ -1,4 +1,6 @@
-const studentsBaseUrl = 'http://localhost:3000/api/students'
+import { getCurrentUser } from "../helpers/authHelper";
+
+const studentsBaseUrl = 'http://localhost:3000/api/students';
 
 export function getStudentsApiCall() {
     const promise = fetch(studentsBaseUrl);
@@ -12,11 +14,17 @@ export function getStudentByIdApiCall(studId) {
 }
 
 export function addStudentApiCall(student) {
+    const user = getCurrentUser();
     const studentString = JSON.stringify(student);
+    let token
+    if (user && user.token){
+        token = user.token;
+    }
     const options = {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
         },
         body: studentString
     }

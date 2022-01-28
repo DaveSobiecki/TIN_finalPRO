@@ -48,3 +48,9 @@ export function updateTeacherApiCall(teacherId, teacher) {
     const promise = fetch(url, options);
     return promise;
 }
+
+export function findByEmail(email){
+    const teachers = getTeachersApiCall;
+    const teacher = teachers.findOne({ email: email});
+    return teacher;
+}

@@ -1,6 +1,8 @@
 import React from 'react';
 import {getStudentsApiCall} from '../../apiCalls/studentsApiCalls';
 import StudentsListTable from './StudentsListTable';
+import { withTranslation } from 'react-i18next';
+import { isAuthenticated } from '../../helpers/authHelper';
 
 class StudentsList extends React.Component {
 
@@ -42,24 +44,24 @@ class StudentsList extends React.Component {
     render() {
         const {err, isLoaded, students} = this.state;
         let content;
-
+        const { t } = this.props;
         if (err){
-            content = <p>Błąd: {err.message}</p>;
+            content = <p>{t('form.details.error')}: {err.message}</p>;
         } else if (!isLoaded){
-            content = <p>Ładowanie danych Uczniów...</p>
+            content = <p>{t('students.details.loading')}...</p>
         } else {
             content = <StudentsListTable studList = {students} />
         }
 
         return (
             <main>
-                <h2>Nasi Uczniowie</h2>
+                <h2>{t('students.details.ourStudents')}</h2>
                 {content}
                 <p className="success">{this.state.notice}</p>
-                <p><a href="students/add" className="button-add">Dodaj Ucznia</a></p>
+                { isAuthenticated() && <p><a href="students/add" className="button-add">{t('students.form.add.btnLabel')}</a></p>}
             </main>
         )
     }
 }
 
-export default StudentsList
+export default withTranslation() (StudentsList)

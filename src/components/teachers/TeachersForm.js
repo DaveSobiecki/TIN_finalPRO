@@ -90,46 +90,46 @@ class TeachersForm extends React.Component {
 
     validateField = (fieldName, fieldValue) => {
         let errorMessage = '';
-
+        const {t} = this.props;
         if (fieldName === 'firstName'){
             if(!checkRequired(fieldValue)){
-                errorMessage = 'Pole wymagane';
+                errorMessage = t('forms.fieldRequired');
             } else if (!checkTextLengthRange(fieldValue, 2, 60)){
-                errorMessage = 'Pole powinno zawierać od 2 do 60 znaków';
+                errorMessage = t('forms.textFieldError');
             }
         }
 
         if (fieldName === 'lastName'){
             if(!checkRequired(fieldValue)){
-                errorMessage = 'Pole wymagane';
+                errorMessage = t('forms.fieldRequired');
             } else if (!checkTextLengthRange(fieldValue, 2, 60)){
-                errorMessage = 'Pole powinno zawierać od 2 do 60 znaków';
+                errorMessage = t('forms.textFieldError');
             }
         }
 
         if (fieldName === 'mail'){
             if(!checkRequired(fieldValue)){
-                errorMessage = 'Pole wymagane';
+                errorMessage = t('forms.fieldRequired');
             } else if (!checkTextLengthRange(fieldValue, 5, 60)){
-                errorMessage = 'Pole powinno zawierać od 5 do 60 znaków';
+                errorMessage = t('forms.mailDigitsError');
             } else if (!checkEmail(fieldValue)){
-                errorMessage = 'Pole powinno zawierać prawidłowy adres email';
+                errorMessage = t('forms.mailFieldError');
             }
         }
 
         if (fieldName === 'level'){
             if(!checkRequired(fieldValue)){
-                errorMessage = 'Pole wymagane';
+                errorMessage = t('forms.fieldRequired');
             } else if (!checkTextLengthRange(fieldValue, 2, 2)){
-                errorMessage = 'Pole powinno zawierać 2 znaki opisujące poziom ucznia';
+                errorMessage = t('forms.levelFieldErrorTeacher');
             }
         }
 
         if (fieldName === 'salary'){
             if(!checkRequired(fieldValue)){
-                errorMessage = 'Pole wymagane';
+                errorMessage = t('forms.fieldRequired');
             } else if (!checkNumber(fieldValue)){
-                errorMessage = 'Pole powinno zawierać pensje nauczyciela';
+                errorMessage = t('forms.sallaryFieldError');
             }
         }
 
@@ -233,7 +233,7 @@ class TeachersForm extends React.Component {
 
         if (redirect) {
             const currentFormMode = this.state.formMode;
-            const notice = currentFormMode === formMode.NEW ? t('teachers.for.add.text') : t('teachers.for.edit.text');
+            const notice = currentFormMode === formMode.NEW ? t('teachers.form.add.text') : t('teachers.form.edit.text');
             return(
                 <Redirect to={{
                     pathname: "/teachers",
@@ -256,27 +256,27 @@ class TeachersForm extends React.Component {
                 <form className="form" onSubmit={this.handleSubmit}>
                     <FormInput
                         type="text"
-                        label={t('students.fields.firstName')}
+                        label={t('teachers.fields.firstName')}
                         required
                         error={this.state.errors.firstName}
                         name="firstName"
-                        placeholder={t('students.details.digits')}
+                        placeholder={t('teachers.details.digits')}
                         onChange={this.handleChange}
                         value={this.state.teacher.firstName}
                     />
                     <FormInput
                         type="text"
-                        label={t('students.fields.lastName')}
+                        label={t('teachers.fields.lastName')}
                         required
                         error={this.state.errors.lastName}
                         name="lastName"
-                        placeholder={t('students.details.digits')}
+                        placeholder={t('teachers.details.digits')}
                         onChange={this.handleChange}
                         value={this.state.teacher.lastName}
                     />
                     <FormInput
                         type="number"
-                        label={t('students.fields.salary')}
+                        label={t('teachers.fields.salary')}
                         required
                         error={this.state.errors.salary}
                         name="salary"
@@ -286,7 +286,7 @@ class TeachersForm extends React.Component {
                     />
                     <FormInputLevels
                         type="text"
-                        label={t('students.fields.level')}
+                        label={t('teachers.fields.level')}
                         required
                         error={this.state.errors.level}
                         name="level"
@@ -296,11 +296,11 @@ class TeachersForm extends React.Component {
                     />
                     <FormInput
                         type="email"
-                        label={t('students.fields.mail')}
+                        label={t('teachers.fields.mail')}
                         error={this.state.errors.mail}
                         required
                         name="mail"
-                        placeholder={t('students.details.digitsMail')}
+                        placeholder={t('teachers.details.digitsMail')}
                         onChange={this.handleChange}
                         value={this.state.teacher.mail}
                     />

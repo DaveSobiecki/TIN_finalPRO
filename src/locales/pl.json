@@ -57,7 +57,8 @@
             "error": "Błąd",
             "loading": "Ładowanie danych Ucznia",
             "studentDetails": "Szczegóły Ucznia",
-            "digits": "2-60 digits"
+            "digits": "2-60 znaków",
+            "ourStudents": "Nasi Uczniowie"
         }
     },
     "teachers": {
@@ -78,6 +79,7 @@
             "teacherDetails": "Szczegóły nauczyciela",
             "lessonName": "Nazwa Lekcji",
             "lessonLevel": "Poziom Lekcji",
+            "cancel": "Anuluj",
             "add": {
                 "pageTitle": "Dodawanie Nauczyciela",
                 "btnLabel": "Dodaj nauczyciela",
@@ -99,7 +101,9 @@
             "error": "Błąd",
             "loading": "Ładowanie danych Nauczyciela",
             "teacherDetails": "Szczegóły Nauczyciela",
-            "digits": "2-60 digits"
+            "digits": "2-60 znaków",
+            "digitsMail": "5-60 znaków",
+            "ourTeachers": "Nasi Nauczyciele"
         }
     },
     "lessons": {
@@ -143,8 +147,43 @@
                 "error": "Błąd",
                 "loading": "Ładowanie danych Lekcji",
                 "privateLesson": "Lekcja Prywatna",
+                "privateLessons": "Lekcje Prywatne",
                 "digits": "od 2-60 znaków"
             }
         }
+    },
+    "auth": {
+        "pageTitle": "Logowanie",
+        "password": "Hasło",
+        "login": "Logowanie",
+        "log-in": "Zaloguj",
+        "logout": "Wyloguj"
+    },
+    "forms": {
+        "fieldRequired": "Pole wymagane",
+        "add": "Dodaj",
+        "textFieldError": "Pole powinno zawierać od 2 do 60 znaków",
+        "mailFieldError": "Pole powinno zawierać prawidłowy adres email",
+        "mailDigitsError": "Pole powinno zawierać od 5 do 60 znaków",
+        "ageFieldError": "Pole powinno zawierać wiek ucznia",
+        "levelFieldErrorStud": "Pole powinno zawierać 2 znaki opisujące poziom ucznia",
+        "levelFieldErrorTeacher": "Pole powinno zawierać 2 znaki opisujące poziom nauczyciela",
+        "levelFieldErrorLesson": "Pole powinno zawierać 2 znaki opisujące poziom lekcji",
+        "sallaryFieldError": "Pole powinno zawierać pensje nauczyciela",
+        "startHourFieldError": "Pole powinno zawierać godzinę rozpoczęcia zajęć",
+        "endHourFieldError": "Pole powinno zawierać godzinę zakończenia zajęć",
+        "studIdFieldError": "Pole powinno zawierać id ucznia",
+        "teacherIdFieldError": "Pole powinno zawierać id nauczyciela",
+        "emptyFieldError": "Pole nie może być puste",
+        "formHasErrors": "Formularz zawiera błędy"
+    },
+    "weekdays": {
+        "monday": "Poniedziałek",
+        "tuesday": "Wtorek",
+        "wednesday": "Środa",
+        "thursday": "Czwartek",
+        "friday": "Piątek",
+        "saturday": "Sobota",
+        "sunday": "Niedziela"
     }
 }
